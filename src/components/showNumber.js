@@ -7,6 +7,7 @@ function useNumber(props) {
     const handleOnChange = () => {
         setNumBer(number - 1)
     }
+    console.log("============");
     return [number, handleOnChangeInput, handleOnChange];
 }
 
