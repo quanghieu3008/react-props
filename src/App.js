@@ -1,24 +1,18 @@
 import './App.css';
-import React, { useState } from 'react';
-import MapData from './components/listMap';
-import useStatus from './components/status'
+import React from 'react';
+import useNumber from './components/showNumber';
+import ShowInput from './components/ShowInput';
+
 function App() {
-    const [data, setData] = useState(["ok", "no", "status"])
-    const [status, hanldeStatus, content] = useStatus();
-
+    const [number, handleOnChangeInput, handleOnChange] = useNumber();
+    console.log(number);
     return (
-        <div className="App">
-            <button onClick={hanldeStatus} >{content}</button>
-            {(!status) ?
-                <MapData
-                    data={data}
-                    mapData={(data, key) => (<div key={key}>
-                        <p>{data}</p>
-                    </div>)
-                    }
-                /> : null
-            }
-
+        <div style={{ display: 'flex', flexDirection: 'center', justifyContent: 'center', margin: "100px" }}>
+            {number && number}
+            <ShowInput
+                handleOnChangeInput={handleOnChangeInput}
+                handleOnChange={handleOnChange}
+            />
         </div>
     );
 }
